@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeyPeak - ポイ活最高値判定ボード</title>
+    <style>
+        /* 超軽量・モダンなスタイリング（CSS） */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #2c3e50;
+            color: white;
+            font-weight: 600;
+        }
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        .points {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        .timestamp {
+            font-size: 12px;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🏔️ PeyPeak - 過去最高値ボード</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ポイントサイト</th>
+                <th>案件名</th>
+                <th>過去最高ポイント</th>
+                <th>最終更新日時</th>
+            </tr>
+        </thead>
+        <tbody id="project-table-body">
+            </tbody>
+    </table>
+</div>
+
+<script>
+    // 画面がロードされた時に自動実行される非同期関数
+    async function loadProjectData() {
+        const tableBody = document.getElementById('project-table-body');
+        
+        try {
+            // 同一フォルダ内の data.json を非同期（ノンブロッキング）で取得
+            const response = await fetch('data.json');
+            if (!response.ok) {
+                throw new Error('データの読み込みに失敗しました。');
+            }
+            
+            // テキストストリームをJavaScriptのオブジェクト配列にデコード
+            const projects = await response.json();
+            
+            // テーブルの中身を一度初期化（C言語のバッファクリアに相当）
+            tableBody.innerHTML = '';
+            
+            // 配列をループ処理してHTMLの行を組み立てる
+            projects.forEach(project => {
+                const row = document.createElement('tr');
+                
+                row.innerHTML = `
+                    <td>${project.site_name}</td>
+                    <td><strong>${project.project_name}</strong></td>
+                    <td class="points">${Number(project.highest_points).toLocaleString()} pt</td>
+                    <td class="timestamp">${project.updated_at}</td>
+                `;
+                
+                // 組み立てた行オブジェクトをテーブルの末尾に追加（ポインタの連結に近い処理）
+                tableBody.appendChild(row);
+            });
+            
+        } catch (error) {
+            console.error(error);
+            tableBody.innerHTML = `<tr><td colspan="4" style="color:red; text-align:center;">エラー: ${error.message}</td></tr>`;
+        }
+    }
+
+    // 関数の実行発火
+    loadProjectData();
+</script>
+
+</body>
+</html>

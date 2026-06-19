@@ -1,0 +1,38 @@
+[
+    {
+        "site_name": "ハピタス",
+        "project_name": "UNEXT",
+        "highest_points": 10100,
+        "updated_at": "2026-06-19 12:52:57"
+    },
+    {
+        "site_name": "モッピー",
+        "project_name": "楽天証券",
+        "highest_points": 20000,
+        "updated_at": "2026-06-19 12:41:57"
+    },
+    {
+        "site_name": "MOPPY",
+        "project_name": "三井住友カード",
+        "highest_points": 10000,
+        "updated_at": "2026-06-19 08:36:13"
+    },
+    {
+        "site_name": "モッピー",
+        "project_name": "olive",
+        "highest_points": 12000,
+        "updated_at": "2026-06-19 08:13:57"
+    },
+    {
+        "site_name": "モッピー",
+        "project_name": "楽天カード",
+        "highest_points": 15000,
+        "updated_at": "2026-06-19 07:46:36"
+    },
+    {
+        "site_name": "ハピタス",
+        "project_name": "楽天証券",
+        "highest_points": 50000,
+        "updated_at": "2026-06-19 07:40:27"
+    }
+]
