@@ -1,6 +1,12 @@
 [
     {
         "site_name": "ハピタス",
+        "project_name": "UFJ銀行",
+        "highest_points": 10000,
+        "updated_at": "2026-07-14 10:02:24"
+    },
+    {
+        "site_name": "ハピタス",
         "project_name": "JCBcardw",
         "highest_points": 10000,
         "updated_at": "2026-06-21 00:27:31"
