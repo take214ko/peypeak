@@ -53,6 +53,93 @@
             font-size: 12px;
             color: #7f8c8d;
         }
+
+        /* --- 新しいセクション: 理由ボックス --- */
+        .reason-box {
+            margin-top: 24px;
+            padding: 20px 24px;
+            background: #fff8f8;
+            border-left: 4px solid #e74c3c;
+            border-radius: 8px;
+            line-height: 1.8;
+            /* フェードインアニメーション */
+            animation: fadeInReason 1.5s ease-out;
+        }
+        .reason-box h2 {
+            font-size: 18px;
+            margin: 0 0 10px;
+            color: #c0392b;
+        }
+        .reason-box p {
+            margin: 0;
+            color: #2c3e50;
+        }
+        .moppy-highlight {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        /* --- 新しいセクション: 紹介コードと入会特典 --- */
+        .referral-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #fff;
+            border: 3px solid transparent;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            
+            /* 点滅アニメーション */
+            animation: pulseReferralBorder 2s infinite;
+        }
+        .referral-section h3 {
+            font-size: 18px;
+            margin: 0 0 15px;
+            color: #2c3e50;
+        }
+        .bonus-point {
+            display: inline-block;
+            font-size: 28px;
+            font-weight: bold;
+            color: #e74c3c;
+            margin: 10px 0;
+            
+            /* バウンスアニメーション */
+            animation: bouncePoint 1s infinite alternate;
+        }
+        .code-box {
+            display: block;
+            font-size: 24px;
+            font-family: 'Courier New', Courier, monospace;
+            background: #f4f7f6;
+            padding: 12px;
+            border-radius: 8px;
+            letter-spacing: 2px;
+            margin-top: 15px;
+            color: #333;
+        }
+
+        /* --- アニメーション定義（Keyframes） --- */
+        
+        /* 理由ボックスのフェードイン */
+        @keyframes fadeInReason {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 紹介コード枠のパルス（点滅） */
+        @keyframes pulseReferralBorder {
+            0% { border-color: rgba(231, 76, 60, 0.3); box-shadow: 0 0 10px rgba(231, 76, 60, 0.2); }
+            50% { border-color: rgba(231, 76, 60, 1); box-shadow: 0 0 20px rgba(231, 76, 60, 0.5); }
+            100% { border-color: rgba(231, 76, 60, 0.3); box-shadow: 0 0 10px rgba(231, 76, 60, 0.2); }
+        }
+
+        /* 特典ポイントのバウンス（揺れ） */
+        @keyframes bouncePoint {
+            0% { transform: scale(1) translateY(0); }
+            100% { transform: scale(1.05) translateY(-5px); }
+        }
+
     </style>
 </head>
 <body>
@@ -72,6 +159,29 @@
         <tbody id="project-table-body">
             </tbody>
     </table>
+
+    <!-- 💡 書き換えられた「MOPPYをやるべき理由」ボックス -->
+    <div class="reason-box">
+        <h2>💡 MOPPY（モッピー）をやるべき決定的な理由</h2>
+        <p>
+            ポイ活において、<span class="moppy-highlight">MOPPYは絶対に外せません。</span><br>
+            日常のサービス利用をMOPPY経由にするだけで、貯まったポイントは<span class="moppy-highlight">JALマイル</span>や<span class="moppy-highlight">銀行振込、各社スマホ決済（PayPay、楽天ペイなど）</span>へ、非常に高い交換レートで反映されます。<br>
+            コツコツ続けることで、旅行や日々の生活費の大幅な節約に直結するため、MOPPYでのポイ活こそが「お得」への最短ルートです。
+        </p>
+    </div>
+
+    <!-- ✨ 追加された「紹介コードと入会特典」セクション -->
+    <div class="referral-section">
+        <h3>🎁 特別入会キャンペーン 🎁</h3>
+        <p>
+            ここからMOPPYに新規登録してミッションをクリアすると、<br>
+            あなたも<span class="bonus-point">2,000 pt</span>ゲット！
+        </p>
+        <p>私の紹介コード：</p>
+        <!-- あなたの紹介コードに書き換えてください -->
+        <span class="code-box">[あなたの紹介コードを入れる]</span>
+    </div>
+
 </div>
 
 <script>
