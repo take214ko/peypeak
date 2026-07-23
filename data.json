@@ -1,9 +1,15 @@
 [
     {
         "site_name": "ハピタス",
+        "project_name": "OLEIVE",
+        "highest_points": 12000,
+        "updated_at": "2026-07-23 14:11:04"
+    },
+    {
+        "site_name": "ハピタス",
         "project_name": "UFJ銀行",
         "highest_points": 12000,
-        "updated_at": "2026-07-23 14:03:30"
+        "updated_at": "2026-07-23 14:07:38"
     },
     {
         "site_name": "ハピタス",
