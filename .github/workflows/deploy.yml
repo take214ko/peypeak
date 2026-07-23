@@ -1,0 +1,37 @@
+name: PeyPeak Auto Pipeline
+
+on:
+  schedule:
+    # 毎日 UTC 0:00, 12:00 (日本時間 9:00, 21:00) に自動実行
+    - cron: '0 0,12 * * *'
+  workflow_dispatch: # 手動実行用ボタン（テスト用）
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: リポジトリのチェックアウト
+        uses: actions/checkout@v4
+
+      - name: Python環境のセットアップ
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: 依存ライブラリのインストール
+        run: |
+          python -m pip install --upgrade pip
+          pip install google-generativeai requests beautifulsoup4
+
+      - name: パイプラインの実行
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python scripts/main_pipeline.py
+
+      - name: 変更されたファイルを自動コミット＆Push
+        run: |
+          git config --global user.name "peypeak-bot"
+          git config --global user.email "bot@peypeak.local"
+          git add data.json index.html
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto update: Poikatsu data & HTML [skip ci]" && git push)
