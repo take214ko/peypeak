@@ -1,0 +1,19 @@
+name: Test Gemini Secrets
+
+on:
+  workflow_dispatch: # 手動実行ボタンを有効化
+
+jobs:
+  test-secret:
+    runs-on: ubuntu-latest
+    steps:
+      - name: APIキーの設定確認
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          if [ -z "$GEMINI_API_KEY" ]; then
+            echo "❌ エラー: GEMINI_API_KEY が設定されていません"
+            exit 1
+          else
+            echo "✅ 成功: GEMINI_API_KEY が正常に読み込まれました！"
+          fi
