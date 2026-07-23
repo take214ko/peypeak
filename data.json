@@ -1,5 +1,11 @@
 [
     {
+        "site_name": "ハピタス",
+        "project_name": "三井住友カード",
+        "highest_points": 8000,
+        "updated_at": "2026-07-23 23:22:59"
+    },
+    {
         "site_name": "モッピー",
         "project_name": "楽天銀行",
         "highest_points": 13000,
